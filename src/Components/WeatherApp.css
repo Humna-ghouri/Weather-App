@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: url("../assets/bg-img.jpg") no-repeat center center/cover;
+    background-size: cover;
+    transition: background 0.5s ease;
+    overflow-x: hidden;
+  }
+  
+  .greeting {
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .weather-emoji {
+    text-align: center;
+    font-size: 6rem;
+    margin: 20px 0;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  /* Weather form styles */
+  .weather-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .weather-form input {
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #96dbe2;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  label{
+    color: white;
+  }
+  .weather-form input:focus {
+    border-color: #9fdeaf;
+    outline: none;
+  }
+  
+  .weather-form button {
+    background-color: #4b8deb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .weather-form button:hover {
+    background-color: #0483fb;
+    transform: scale(1.05);
+  }
+  
+  /* Weather card styles */
+  .card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #96dbe2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    opacity: 0.9;
+  }
+  
+  .card p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .card img {
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+  }
+  p{
+    color: white;
+    text-align: center;
+  }
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
