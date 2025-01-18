@@ -301,3 +301,62 @@ body.dark-mode {
         transform: translateY(0);
     }
 }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bounce animation */
+@keyframes cardBounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.weather-card:hover {
+    transform: scale(1.05) translateY(-5px); /* Scale up and move up slightly */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+    background-color: rgba(107, 171, 216, 0.9); /* Slightly change background color on hover */
+}
+
+.forecast-card {
+    background-color: var(--light-card-bg); /* Light grey background for forecast cards */
+    color: var(--text-dark);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Added background-color transition */
+    opacity: 0; /* Start hidden for fade-in */
+    animation: fadeIn 0.5s forwards, cardBounce 0.5s forwards; /* Fade-in and bounce animation */
+}
+
+.forecast-card:hover {
+    transform: scale(1.05) translateY(-5px); /* Scale up and move up slightly */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+    background-color: #696b6d; /* Change background color on hover */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
