@@ -1,212 +1,303 @@
- body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    background: url("https://images.pexels.com/photos/314726/pexels-photo-314726.jpeg?cs=srgb&dl=pexels-pixabay-314726.jpg&fm=jpg") no-repeat center center/cover;
-    background-size: cover;
-    transition: background 0.5s ease;
-    overflow-x: hidden;
-  } 
-   
-/* Reset margin, padding, and height for both html and body */
-/* html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%; 
-  }
-  
-  /* Default background image */
-  body {
-    font-family: Arial, sans-serif;
-    background: url("https://images.pexels.com/photos/314726/pexels-photo-314726.jpeg?cs=srgb&dl=pexels-pixabay-314726.jpg&fm=jpg") no-repeat center center/cover;
-    background-size: cover;
-    background-position: top center; /* Ensures image is aligned at the top */
-  } */
-  
-  /* Ensure weather-app takes full height without scrollbars */
-  .weather-app {
-    width: 100%;
-    height: 100vh; /* Full height of the viewport */
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    transition: background-image 0.5s ease-in-out;
-  }
-  
-  /* Ensure all weather background images are aligned the same way */
-  .hot-bg, .cold-bg, .snowy-bg, .windy-bg, .rainy-bg {
-    background-position: top center; /* Ensures no space at the top */
-    background-size: cover; /* Ensure the image covers the entire area */
-    background-repeat: no-repeat;
-  }
-  
-  /* Hot weather background */
-  .hot-bg {
-    background: url('../assets/hot-bg.avif') no-repeat center center/cover;
-    margin-top: 0%;
-  }
-  
-  /* Cold weather background */
-  .cold-bg {
-    background: url('../assets/cold-bg.jpg') no-repeat center center/cover;
-  }
-  
-  /* Snowy weather background */
-  .snowy-bg {
-    background: url('../assets/snowy-bg.webp') no-repeat center center/cover;
-  }
-  
-  /* Windy weather background */
-  .windy-bg {
-    background: url('../assets/windy-bg.jpg') no-repeat center center/cover;
-  }
-  
-  /* Rainy weather background */
-  .rainy-bg {
-    background: url('../assets/rainy-bg.jpg') no-repeat center center/cover;
-  }
-    
-  /* Other styles remain unchanged */
-      .greeting {
-    text-align: center;
-    font-size: 2rem;
-    color: white;
-    margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  }
-  
-  .weather-emoji {
-    text-align: center;
-    font-size: 6rem;
-    margin: 20px 0;
-    animation: fadeIn 1.5s ease-in-out;
-  }
-  
-  /* Weather form styles */
-  .weather-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .weather-form input {
-    width: 300px;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid #96dbe2;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-  
-  label{
-    color: rgb(6, 0, 0);
-  }
-  .weather-form input:focus {
-    border-color: #237ff8;
-    outline: none;
-  }
-  
-  .weather-form button {
-    background-color: #4b8deb;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .weather-form button:hover {
-    background-color: #0483fb;
-    transform: scale(1.05);
-  }
-  
-  /* Weather card styles */
-  .card {
-    background-color: rgba(95, 137, 176, 0.529);
-    border: 2px solid #237ff8;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 400px;
-    text-align: center;
-    opacity: 0.9;
-  }
-  
-  .card p {
-    margin: 5px 0;
-    font-size: 16px;
-  }
-  
-  .card img {
-    margin-top: 10px;
-    width: 60px;
-    height: 60px;
-  }
-  p{
-    color: rgb(0, 0, 0);
-    text-align: center;
-  }
-  #ShowAllBtn {
-    background-color: #bec0c3c1;
-    color: rgb(16, 16, 16);
-    padding: 6px 12px; /* Reduced size */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px; /* Smaller font size */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: block; /* Ensure the button behaves like a block element */
-    margin: 20px auto; /* Center horizontally */
-    text-align: center;
-  }
-  
-  #ShowAllBtn:hover {
-    background-color: #70829a5d; /* Darker shade on hover */
-    transform: scale(1.05); /* Slight scaling on hover */
-  }
-  
-  #ShowAllBtn:active {
-    transform: scale(0.95); /* Slight shrinking on click */
-  }
+/* 
+/* src/Navbar.css */
+.weather-card {
+    transition: background-color 0.3s, color 0.3s;
+}
 
-  /* bg imgs set as condition */
-  
-  /* .default-bg {
-    background-color: lightgray;
-  } */
-  
-  /* .hot-bg {
-    background: url('../assets/hot-bg.avif') no-repeat center center/cover;
-  }
-  
-  .cold-bg {
-    background: url('../assets/cold-bg.jpg') no-repeat center center/cover;
-  }
-  
-  .snowy-bg {
-    background: url('../assets/snowy-bg.webp') no-repeat center center/cover;
-  }
-  
-  .windy-bg {
-    background: url('../assets/windy-bg.jpg') no-repeat center center/cover;
-  }
-  
-  .rainy-bg {
-    background: url('../assets/rainy-bg.jpg') no-repeat center center/cover;
-  }
-   */
-          /* Animation */
-  @keyframes fadeIn {
+.forecast-card {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Ensure the search input has a minimum width */
+.navbar .form-control {
+    min-width: 150px; /* Minimum width for the search input */
+}
+
+/* Prevent buttons from wrapping */
+.navbar .btn {
+    white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+/* Media query for screens smaller than 990px */
+@media (max-width: 990px) {
+    .navbar .form-control {
+        width: auto; /* Allow the search input to shrink */
+    }
+}
+
+/* Media query for screens smaller than 710px */
+@media (max-width: 710px) {
+    .navbar .form-control {
+        width: 120px; /* Set a smaller width for the search input */
+    }
+
+    .navbar .btn {
+        font-size: 0.8rem; /* Reduce button font size */
+        padding: 5px 10px; /* Adjust padding for buttons */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .navbar .d-flex {
+        width: 100%; /* Make the form take full width */
+        justify-content: space-between; /* Space out the items */
+    }
+}
+@media (max-width: 650px) {
+    .navbar .form-control {
+        width: 100%; /* Make the search input take full width */
+        margin-bottom: 10px; /* Add some space below the search input */
+    }
+
+    .navbar .btn {
+        font-size: 0.75rem; /* Further reduce button font size */
+        padding: 5px 8px; /* Adjust padding for buttons */
+        margin: 5px 0; /* Add margin for spacing between buttons */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+    }
+
+    .navbar .d-flex {
+        width: 100%; /* Make the form take full width */
+        justify-content: center; /* Center the search bar */
+    }
+
+    .navbar .btn-container {
+        display: flex; /* Use flexbox for buttons */
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons */
+        width: 100%; /* Make the button container take full width */
+    }
+}
+@media (max-width: 620px) {
+    #nav {
+        display: flex; /* Use flexbox for buttons */
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons */
+        width: 100%; /* Make the button container take full width */
+    }
+    @media (max-width: 380px) {
+        #nav {
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%;
+        }
+        .navbar .d-flex {
+            display: flex; /* Use flexbox for buttons */
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center buttons */
+            width: 100%; /* Make the button container take full width */
+                                                                                                                    
+        }
+    
+}} 
+/* WeatherApp.css */
+
+/* Define color variables */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.weather-card {
+    background-color: var(--light-card-bg);
+    color: var(--text-dark);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; /* Start hidden for fade-in */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+.weather-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-card {
+    background-color: var(--light-card-bg);
+    color: var(--text-dark);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; /* Start hidden for fade-in */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+.forecast-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.footer {
+    padding: 10px 0;
+    text-align: center;
+    background-color: var(--light-bg);
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+.weather-card.dark-mode {
+    background-color: var(--dark-card-bg);
+    color: var(--text-light);
+}
+
+.forecast-card.dark-mode {
+    background-color: var(--dark-card-bg);
+    color: var(--text-light);
+}
+
+.footer.dark-mode {
+    background-color: var(--dark-bg);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
+        transform: translateY(-10px);
     }
     to {
-      opacity: 1;
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
+
+:root {
+    --light-bg: #eef2f5; /* Light mode background (light blue) */
+    --main-card-bg: #5eb8f8; /* Main card background (same as button color) */
+    --light-card-bg: #bdb7b7a9; /* Light grey card background */
+    --dark-bg: #000000; /* Dark mode background (black) */
+    --dark-card-bg: #2A4D8C; /* Dark blue card background */
+    --text-light: #fff; /* Light text color */
+    --text-dark: #000; /* Dark text color */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--light-bg); /* Light background */
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+    margin-bottom: 20px;
+    background-color: #536c7e; /* Light color for navbar in light mode */
+}
+
+.weather-card {
+    background-color: var(--main-card-bg); /* Same as button color */
+    color: var(--text-light); /* Text color for better contrast */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; /* Start hidden for fade-in */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+.weather-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-card {
+    background-color: var(--light-card-bg); /* Light grey background for forecast cards */
+    color: var(--text-dark);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; /* Start hidden for fade-in */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+.forecast-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.footer {
+    padding: 10px 0;
+    text-align: center;
+    background-color: var(--light-bg); /* Light background for footer in light mode */
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: var(--dark-bg); /* Set body color to black in dark mode */
+    color: var(--text-light);
+}
+
+.weather-card.dark-mode {
+    background-color: var(--dark-card-bg); /* Dark blue card background */
+    color: var(--text-light);
+}
+
+.forecast-card.dark-mode {
+    background-color: var(--dark-card-bg); /* Dark blue card background */
+    color: var(--text-light);
+}
+
+.footer.dark-mode {
+    background-color: var(--dark-bg); /* Set footer color to black in dark mode */
+    color: var(--text-light); /* Set footer text color to white */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
