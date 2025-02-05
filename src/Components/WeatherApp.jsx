@@ -450,13 +450,12 @@
 //     );
 // };
 
-// export default WeatherApp;
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaGlobe } from 'react-icons/fa';
+import { FaGlobe, FaMap, FaMapMarkerAlt, FaSun, FaMoon, FaSearch } from 'react-icons/fa'; // Import the icons
 import axios from 'axios';
-import Swal from 'sweetalert2'; // Import SweetAlert2
-import './WeatherApp.css'; // Custom CSS file for additional styling
+import Swal from 'sweetalert2';
+import './WeatherApp.css';
 
 const WeatherApp = () => {
     const [cityName, setCityName] = useState('');
@@ -467,7 +466,12 @@ const WeatherApp = () => {
 
     const toggleTheme = () => {
         setIsDarkMode(!isDarkMode);
+        document.body.classList.toggle('dark-mode', !isDarkMode);
     };
+
+    useEffect(() => {
+        document.body.classList.toggle('dark-mode', isDarkMode);
+    }, [isDarkMode]);
 
     const fetchWeatherData = async (e) => {
         e.preventDefault();
@@ -501,45 +505,47 @@ const WeatherApp = () => {
         const uniqueDays = {};
         data.forEach(item => {
             const date = new Date(item.dt * 1000);
-            const dayKey = date.toISOString().split('T')[0]; // Use date as key to ensure uniqueness
+            const dayKey = date.toISOString().split('T')[0];
             if (!uniqueDays[dayKey]) {
-                uniqueDays[dayKey] = item; // Store the first occurrence of each day
+                uniqueDays[dayKey] = item;
             }
         });
         return Object.values(uniqueDays);
     };
 
-    // Get the forecast data for the next 6 days excluding today
-    const uniqueForecastData = getUniqueDays(forecastData).slice(1, 7); // Skip today and get the next 6 days
+    const uniqueForecastData = getUniqueDays(forecastData).slice(1, 7);
 
     return (
         <div>
-            <nav className={`navbar navbar-expand ${isDarkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`} >
+            <nav 
+                className={`navbar navbar-expand ${isDarkMode ? 'navbar-dark' : 'navbar-light'}`} 
+                style={{ backgroundColor: isDarkMode ? '#7C93C3' : '#EEF5FF' }}
+            >
                 <div className="container-fluid" id='nav'>
                     <a className="navbar-brand" href="#">
                         <FaGlobe /> Global Weather
                     </a>
-                    <div className="d-flex ms-auto">
-                        <form className="d-flex" onSubmit={fetchWeatherData}>
-                            <input 
-                                className="form-control me-2" 
-                                type="search" 
-                                placeholder="City" 
-                                value={cityName} 
-                                onChange={(e) => setCityName(e.target.value)} 
-                                style={{ width: '200px', height: '38px' }}
-                            />
-                            <button className="btn btn-search" type="submit" style={{ backgroundColor: isDarkMode ? '#133E87' : '#47B5FF', color: 'white', height: '35px' }}>
-                                Search
-                            </button>
-                            <button className="btn btn-toggle ms-2" style={{ backgroundColor: isDarkMode ? '#133E87' : '#47B5FF', color: 'white', height: '38px' }} onClick={toggleTheme}>
-                                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                            </button>
-                            <button className="btn btn-map ms-2" style={{ backgroundColor: isDarkMode ? '#133E87' : '#47B5FF', color: 'white', height: '38px' }} onClick={() => setIsMapVisible(!isMapVisible)}>
-                                {isMapVisible ? 'Hide Map' : 'Show Map'}
-                            </button>
-                        </form>
-                    </div>
+                    <div className="d-flex ms-auto search-sec">
+    <form className="d-flex flex-wrap" onSubmit={fetchWeatherData}>
+        <input 
+            className="form-control me-2" 
+            type="search" 
+            placeholder="City" 
+            value={cityName} 
+            onChange={(e) => setCityName(e.target.value)} 
+            style={{ width: '200px', height: '38px' }}
+        />
+        <button className="btn btn-search" type="submit" style={{ backgroundColor: isDarkMode ? '#435585 ' : '#707fa9', color: 'white', height: '35px' }}>
+            <FaSearch />
+        </button>
+        <button className="btn btn-toggle ms-2" style={{ backgroundColor: isDarkMode ? '#435585' : '#707fa9', color: 'white', height: '38px' }} onClick={toggleTheme}>
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+        </button>
+        <button className="btn btn-map ms-2" style={{ backgroundColor : isDarkMode ? '#435585' : '#707fa9', color: 'white', height: '38px' }} onClick={() => setIsMapVisible(!isMapVisible)}>
+            {isMapVisible ? <FaMapMarkerAlt /> : <FaMap />}
+        </button>
+    </form>
+</div>
                 </div>
             </nav>
 
@@ -587,7 +593,6 @@ const WeatherApp = () => {
                 </div>
             )}
 
-            {/* Footer */}
             <footer className={`footer ${isDarkMode ? 'dark-mode' : ''} mt-4`}>
                 <div className="container text-center">
                     <p className="mb-0">© {new Date().getFullYear()} Global Weather. All rights reserved.</p>
